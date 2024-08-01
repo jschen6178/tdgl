@@ -98,11 +98,11 @@ def FM_field_vector_potential(
     field_units: str = "T",
     length_units: str = "um",
 ):
-    CURRENT_DIRECTORY = os.getcwd()
-    DATA_AND_LAYER_NAME = "B_demag_75mT_0K_layer2"
+    CURRENT_DIRECTORY = os.path.dirname(os.getcwd())
+    DATA_AND_LAYER_NAME = "B_demag_25mT_10K_FeCo_2_6_layer2"
     DEMAG_B_Z_FILEPATH = os.path.join(CURRENT_DIRECTORY, "mumax_fields", "%s_z.npy" % DATA_AND_LAYER_NAME)
     DEMAG_B_Z = np.load(DEMAG_B_Z_FILEPATH)
-    APPLIED_B_Z = 0.075
+    APPLIED_B_Z = 0.025
     B_Z = DEMAG_B_Z + APPLIED_B_Z
     if z.ndim == 0:
         z = z * np.ones_like(x)

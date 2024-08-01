@@ -87,7 +87,7 @@ def textured_vector_potential(
     centered_xs = centered_xs*ureg("meter")
 
     # x-y component of vector potential
-    Axy = 1/2*interpolated_Bz * np.stack([centered_ys, -1*centered_xs], axis=1)
+    Axy = 1/2*interpolated_Bz * np.stack([-1*centered_ys, centered_xs], axis=1)
     # 1/2 to cancel out the double counting
     
     A = np.hstack([Axy, np.zeros_like(Axy[:,:1])])
@@ -105,14 +105,14 @@ def FM_field_vector_potential(
     length_units: str = "um",
 ):
     CURRENT_DIRECTORY = os.path.dirname(os.getcwd())
-    DATA_AND_LAYER_NAME = "B_demag_75mT_0K_layer2"
+    DATA_AND_LAYER_NAME = "B_demag_150mT_10K_FeCo_5_5_7Stack_layer7"
     DEMAG_B_Z_FILEPATH = os.path.join(CURRENT_DIRECTORY, "mumax_fields", "%s_z.npy" % DATA_AND_LAYER_NAME)
     DEMAG_B_Z = np.load(DEMAG_B_Z_FILEPATH)
     
     #################################################
     # CHANGE THIS DEPENDING ON APPLIED FIELD IN RUN #
     #################################################
-    APPLIED_B_Z = 0.075
+    APPLIED_B_Z = 0.150
 
     B_Z = DEMAG_B_Z + APPLIED_B_Z
     if z.ndim == 0:

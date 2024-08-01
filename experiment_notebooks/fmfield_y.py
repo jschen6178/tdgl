@@ -1,3 +1,9 @@
+"""
+Note:
+Not useful for current TDGL simulations as we are only working in 2D.
+
+Please use fmfield_z.py
+"""
 import os
 import tempfile
 import pint
